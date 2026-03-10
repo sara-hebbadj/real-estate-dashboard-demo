@@ -17,12 +17,12 @@ const chartFont = {
 const css = getComputedStyle(document.documentElement);
 const uiColor = (variable, fallback) => css.getPropertyValue(variable).trim() || fallback;
 
-const chartText = uiColor("--muted", "#61708f");
-const chartLabel = uiColor("--text", "#14233f");
-const chartGrid = "rgba(126, 145, 180, 0.22)";
-const chartPrimary = uiColor("--primary", "#2f63ff");
-const chartAccent = uiColor("--accent", "#7a7ff6");
-const chartPrimaryStrong = uiColor("--primary-strong", "#2349c6");
+const chartText = uiColor("--muted", "#9cb0d1");
+const chartLabel = uiColor("--text", "#f2f6ff");
+const chartGrid = "rgba(207, 174, 102, 0.16)";
+const chartPrimary = uiColor("--primary", "#cfae66");
+const chartAccent = uiColor("--accent", "#d8b978");
+const chartPrimaryStrong = uiColor("--primary-strong", "#e2c586");
 
 const commonOptions = {
   responsive: true,
@@ -51,8 +51,8 @@ const priceTrendCanvas = document.getElementById("priceTrendChart");
 if (priceTrendCanvas) {
   const lineCtx = priceTrendCanvas.getContext("2d");
   const lineGradient = lineCtx.createLinearGradient(0, 0, 0, 300);
-  lineGradient.addColorStop(0, "rgba(47, 99, 255, 0.2)");
-  lineGradient.addColorStop(1, "rgba(47, 99, 255, 0.02)");
+  lineGradient.addColorStop(0, "rgba(207, 174, 102, 0.22)");
+  lineGradient.addColorStop(1, "rgba(207, 174, 102, 0.03)");
 
   new Chart(priceTrendCanvas, {
     type: "line",
@@ -81,8 +81,8 @@ const areaSalesCanvas = document.getElementById("areaSalesChart");
 if (areaSalesCanvas) {
   const barCtx = areaSalesCanvas.getContext("2d");
   const barGradient = barCtx.createLinearGradient(0, 0, 0, 280);
-  barGradient.addColorStop(0, chartAccent);
-  barGradient.addColorStop(1, chartPrimaryStrong);
+  barGradient.addColorStop(0, chartPrimaryStrong);
+  barGradient.addColorStop(1, chartAccent);
 
   new Chart(areaSalesCanvas, {
     type: "bar",
@@ -118,8 +118,8 @@ if (typeDistributionCanvas) {
       datasets: [
         {
           data: [45, 25, 18, 12],
-          backgroundColor: [chartPrimaryStrong, chartAccent, "#5f8dff", "#34b78f"],
-          borderColor: "#ffffff",
+          backgroundColor: [chartPrimaryStrong, chartAccent, "#d8c089", "#9a7f44"],
+          borderColor: "#08162b",
           borderWidth: 2
         }
       ]
@@ -141,50 +141,6 @@ if (typeDistributionCanvas) {
   });
 }
 
-
-const downloadBlob = (filename, content, type = "text/csv;charset=utf-8;") => {
-  const blob = new Blob([content], { type });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
-};
-
-const excelTemplateLinks = document.querySelectorAll("[data-excel-template]");
-excelTemplateLinks.forEach((link) => {
-  link.addEventListener("click", (event) => {
-    event.preventDefault();
-    const name = link.getAttribute("data-excel-template") || "Template";
-    const csv = [
-      "Field,Value",
-      "Agent,Sample Agent",
-      "Property,Sample Property",
-      "Stage,Viewing",
-      "Expected Close Date,2026-06-30",
-      "Commission (AED),25000"
-    ].join("\n");
-    downloadBlob(`${name}.csv`, csv);
-  });
-});
-
-const excelPackLink = document.querySelector("[data-excel-pack]");
-if (excelPackLink) {
-  excelPackLink.addEventListener("click", (event) => {
-    event.preventDefault();
-    const csv = [
-      "Report,Status",
-      "Weekly Viewings,Included",
-      "Commission Tracker,Included",
-      "Inventory Valuation,Included"
-    ].join("\n");
-    downloadBlob("PrimeEstate_Excel_Pack.csv", csv);
-  });
-}
-
 const generateReportButton = document.getElementById("generate-report");
 if (generateReportButton) {
   generateReportButton.addEventListener("click", () => {
@@ -195,6 +151,15 @@ if (generateReportButton) {
       "Commission Collected,292000",
       "Deals Closed,56"
     ].join("\n");
-    downloadBlob("Monthly_Performance_Report.csv", csv);
+
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "Monthly_Performance_Report.csv";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
   });
 }
