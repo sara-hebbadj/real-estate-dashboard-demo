@@ -60,6 +60,7 @@ body {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 800;
+  letter-spacing: 0.2px;
 }
 
 .brand-subtitle {
@@ -71,7 +72,7 @@ body {
 
 .nav-links {
   display: grid;
-  gap: 8px;
+  gap: 9px;
 }
 
 .nav-link {
@@ -122,6 +123,7 @@ body {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
 }
 
 .topbar {
@@ -170,12 +172,12 @@ body {
 .topbar-right {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .notification {
-  border: 1px solid var(--border);
-  background: #fff;
+  border: 1px solid rgba(168, 186, 255, 0.3);
+  background: rgba(20, 30, 54, 0.82);
   border-radius: 12px;
   padding: 9px 12px;
   font-weight: 600;
@@ -190,6 +192,7 @@ body {
   height: 8px;
   border-radius: 50%;
   background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(154, 123, 255, 0.18);
 }
 
 .date-display {
@@ -497,6 +500,7 @@ tbody tr:hover {
   color: var(--primary-strong);
   text-decoration: none;
   font-weight: 600;
+  padding: 10px 12px;
 }
 
 .excel-files a:hover {
