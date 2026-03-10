@@ -21,7 +21,7 @@
         <div class="report-actions">
           <select aria-label="Report period"><option>May 2026</option><option>Apr 2026</option><option>Mar 2026</option></select>
           <select aria-label="Team"><option>All teams</option><option>Off-plan team</option><option>Secondary market</option></select>
-          <button class="btn-primary" type="button">Generate Report</button>
+          <button class="btn-primary" type="button" id="generate-report">Generate Report</button>
         </div>
         <p class="report-note">Produces board-ready PDF + Excel pack with area KPIs, agent performance, commission summary, and lead funnel diagnostics.</p>
       </section>
@@ -46,11 +46,11 @@
           <div class="section-head"><h3>Excel Workflow</h3><span class="excel-badge">Agent Friendly</span></div>
           <p class="excel-meta">Your agents can keep using Excel templates and auto-sync into this dashboard.</p>
           <ul class="excel-files">
-            <li><span>Weekly_Viewing_Report.xlsx</span><span>Template</span></li>
-            <li><span>Agent_Commission_Tracker.xlsx</span><span>Template</span></li>
-            <li><span>Inventory_Valuation_Model.xlsx</span><span>Template</span></li>
+            <li><a href="#" data-excel-template="Weekly_Viewing_Report">Weekly_Viewing_Report.xlsx</a><span>Template</span></li>
+            <li><a href="#" data-excel-template="Agent_Commission_Tracker">Agent_Commission_Tracker.xlsx</a><span>Template</span></li>
+            <li><a href="#" data-excel-template="Inventory_Valuation_Model">Inventory_Valuation_Model.xlsx</a><span>Template</span></li>
           </ul>
-          <button class="btn-secondary" type="button">Download Excel Pack</button>
+          <a class="btn-secondary" href="#" data-excel-pack="1">Download Excel Pack</a>
         </article>
       </section>
 

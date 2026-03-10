@@ -140,3 +140,61 @@ if (typeDistributionCanvas) {
     }
   });
 }
+
+
+const downloadBlob = (filename, content, type = "text/csv;charset=utf-8;") => {
+  const blob = new Blob([content], { type });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+};
+
+const excelTemplateLinks = document.querySelectorAll("[data-excel-template]");
+excelTemplateLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    const name = link.getAttribute("data-excel-template") || "Template";
+    const csv = [
+      "Field,Value",
+      "Agent,Sample Agent",
+      "Property,Sample Property",
+      "Stage,Viewing",
+      "Expected Close Date,2026-06-30",
+      "Commission (AED),25000"
+    ].join("\n");
+    downloadBlob(`${name}.csv`, csv);
+  });
+});
+
+const excelPackLink = document.querySelector("[data-excel-pack]");
+if (excelPackLink) {
+  excelPackLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    const csv = [
+      "Report,Status",
+      "Weekly Viewings,Included",
+      "Commission Tracker,Included",
+      "Inventory Valuation,Included"
+    ].join("\n");
+    downloadBlob("PrimeEstate_Excel_Pack.csv", csv);
+  });
+}
+
+const generateReportButton = document.getElementById("generate-report");
+if (generateReportButton) {
+  generateReportButton.addEventListener("click", () => {
+    const csv = [
+      "Metric,Value",
+      "Closed Revenue,14600000",
+      "Average Deal Size,1950000",
+      "Commission Collected,292000",
+      "Deals Closed,56"
+    ].join("\n");
+    downloadBlob("Monthly_Performance_Report.csv", csv);
+  });
+}

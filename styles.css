@@ -16,6 +16,7 @@
   --radius: 18px;
   --shadow: 0 12px 24px rgba(24, 43, 84, 0.09);
   --shadow-hover: 0 18px 34px rgba(18, 36, 75, 0.16);
+  --sidebar-width: 220px;
 }
 
 * {
@@ -38,7 +39,7 @@ body {
 }
 
 .sidebar {
-  width: 256px;
+  width: var(--sidebar-width);
   position: fixed;
   inset: 0 auto 0 0;
   z-index: 5;
@@ -97,8 +98,8 @@ body {
 }
 
 .main-content {
-  margin-left: 256px;
-  width: calc(100% - 256px);
+  margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
   padding: 26px;
   display: grid;
   gap: 16px;
@@ -109,7 +110,7 @@ body {
   content: "";
   position: fixed;
   top: 0;
-  left: 256px;
+  left: var(--sidebar-width);
   right: 0;
   height: 96px;
   background: linear-gradient(180deg, rgba(42, 91, 255, 0.12), rgba(42, 91, 255, 0));
@@ -451,6 +452,10 @@ tbody tr:hover {
   color: var(--text);
   font-weight: 600;
   padding: 10px 12px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .excel-sync {
@@ -483,11 +488,23 @@ tbody tr:hover {
 .excel-files li {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
   background: #fff;
   border: 1px solid #dbe6fb;
   border-radius: 10px;
   padding: 10px;
   font-size: 0.88rem;
+}
+
+.excel-files a {
+  color: var(--primary-strong);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 12px;
+}
+
+.excel-files a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 1200px) {
@@ -513,22 +530,48 @@ tbody tr:hover {
   .app-shell { flex-direction: column; }
 
   .sidebar {
-    position: static;
+    position: sticky;
+    top: 0;
     width: 100%;
-    backdrop-filter: blur(10px);
+    max-width: 100%;
+    padding: 12px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brand {
+    margin-bottom: 10px;
+  }
+
+  .nav-links {
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 4px;
+    scrollbar-width: thin;
   }
 
   .main-content {
     margin-left: 0;
     width: 100%;
-    padding: 16px;
+    padding: 14px;
   }
 
   .kpi-grid,
   .pipeline-grid,
   .agents-grid,
-  .settings-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .settings-grid,
+  .hero-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .page-hero,
+  .reports-grid,
+  .report-actions,
+  .chart-grid,
+  .bottom-grid {
+    grid-template-columns: 1fr;
   }
 
   .topbar {
@@ -538,6 +581,15 @@ tbody tr:hover {
 
   .topbar-right {
     justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .metric-value {
+    font-size: 26px;
+  }
+
+  .main-content::before {
+    display: none;
   }
 }
 
@@ -547,6 +599,19 @@ tbody tr:hover {
   .agents-grid,
   .settings-grid {
     grid-template-columns: 1fr;
+  }
+
+  .main-content {
+    padding: 12px;
+  }
+
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-title {
+    font-size: 1.15rem;
   }
 }
 
@@ -622,8 +687,3 @@ tbody tr:hover {
   }
 }
 
-@media (max-width: 860px) {
-  .main-content::before {
-    left: 0;
-  }
-}
