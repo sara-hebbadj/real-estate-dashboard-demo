@@ -510,4 +510,3 @@ tbody tr:hover { background: rgba(207, 174, 102, 0.07); }
   .agents-grid,
   .settings-grid { grid-template-columns: 1fr; }
 }
-
