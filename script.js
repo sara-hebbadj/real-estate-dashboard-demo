@@ -17,12 +17,12 @@ const chartFont = {
 const css = getComputedStyle(document.documentElement);
 const uiColor = (variable, fallback) => css.getPropertyValue(variable).trim() || fallback;
 
-const chartText = uiColor("--muted", "#9faed1");
-const chartLabel = uiColor("--text", "#ecf2ff");
-const chartGrid = "rgba(159, 174, 209, 0.18)";
-const chartPrimary = uiColor("--primary", "#6ea8ff");
-const chartAccent = uiColor("--accent", "#9a7bff");
-const chartPrimaryStrong = uiColor("--primary-strong", "#4f7cff");
+const chartText = uiColor("--muted", "#61708f");
+const chartLabel = uiColor("--text", "#14233f");
+const chartGrid = "rgba(126, 145, 180, 0.22)";
+const chartPrimary = uiColor("--primary", "#2f63ff");
+const chartAccent = uiColor("--accent", "#7a7ff6");
+const chartPrimaryStrong = uiColor("--primary-strong", "#2349c6");
 
 const commonOptions = {
   responsive: true,
@@ -51,8 +51,8 @@ const priceTrendCanvas = document.getElementById("priceTrendChart");
 if (priceTrendCanvas) {
   const lineCtx = priceTrendCanvas.getContext("2d");
   const lineGradient = lineCtx.createLinearGradient(0, 0, 0, 300);
-  lineGradient.addColorStop(0, "rgba(110, 168, 255, 0.32)");
-  lineGradient.addColorStop(1, "rgba(110, 168, 255, 0.04)");
+  lineGradient.addColorStop(0, "rgba(47, 99, 255, 0.2)");
+  lineGradient.addColorStop(1, "rgba(47, 99, 255, 0.02)");
 
   new Chart(priceTrendCanvas, {
     type: "line",
@@ -118,8 +118,8 @@ if (typeDistributionCanvas) {
       datasets: [
         {
           data: [45, 25, 18, 12],
-          backgroundColor: [chartPrimaryStrong, chartAccent, "#7ca6ff", "#51d5bf"],
-          borderColor: "rgba(13, 20, 40, 0.85)",
+          backgroundColor: [chartPrimaryStrong, chartAccent, "#5f8dff", "#34b78f"],
+          borderColor: "#ffffff",
           borderWidth: 2
         }
       ]
