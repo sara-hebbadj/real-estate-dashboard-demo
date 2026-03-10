@@ -1,1 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrimeEstate Analytics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <p class="brand-title">PrimeEstate</p>
+        <p class="brand-subtitle">Analytics Suite</p>
+      </div>
 
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a class="nav-link active" href="#">Dashboard</a>
+        <a class="nav-link" href="#">Listings</a>
+        <a class="nav-link" href="#">Leads</a>
+        <a class="nav-link" href="#">Agents</a>
+        <a class="nav-link" href="#">Analytics</a>
+        <a class="nav-link" href="#">Reports</a>
+        <a class="nav-link" href="#">Settings</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar card">
+        <label class="search-wrap" for="dashboard-search">
+          <span class="label-text">Search</span>
+          <input id="dashboard-search" type="search" placeholder="Search listings, agents, or locations" />
+        </label>
+
+        <div class="topbar-right">
+          <button class="notification" aria-label="Notifications">
+            Alerts
+            <span class="notification-dot"></span>
+          </button>
+          <div class="date-display" id="current-date"></div>
+          <div class="profile" aria-label="User profile">RA</div>
+        </div>
+      </header>
+
+      <section class="kpi-grid" aria-label="Key performance indicators">
+        <article class="card metric-card">
+          <p class="metric-title">Active Listings</p>
+          <p class="metric-value">128</p>
+          <p class="metric-growth">+12% this month</p>
+        </article>
+        <article class="card metric-card">
+          <p class="metric-title">Monthly Sales</p>
+          <p class="metric-value">56</p>
+          <p class="metric-growth">+8% this month</p>
+        </article>
+        <article class="card metric-card">
+          <p class="metric-title">Total Sales Volume</p>
+          <p class="metric-value">$14.6M</p>
+          <p class="metric-growth">+15% this month</p>
+        </article>
+        <article class="card metric-card">
+          <p class="metric-title">Average Days on Market</p>
+          <p class="metric-value">24</p>
+          <p class="metric-growth">-6% this month</p>
+        </article>
+        <article class="card metric-card">
+          <p class="metric-title">Lead Conversion Rate</p>
+          <p class="metric-value">21.4%</p>
+          <p class="metric-growth">+3.1% this month</p>
+        </article>
+      </section>
+
+      <section class="chart-grid">
+        <article class="card chart-card chart-wide">
+          <h2>Market Price Trends</h2>
+          <canvas id="priceTrendChart"></canvas>
+        </article>
+
+        <article class="card chart-card">
+          <h2>Sales Performance by Area</h2>
+          <canvas id="areaSalesChart"></canvas>
+        </article>
+
+        <article class="card chart-card">
+          <h2>Property Type Distribution</h2>
+          <canvas id="typeDistributionChart"></canvas>
+        </article>
+      </section>
+
+      <section class="bottom-grid">
+        <article class="card table-card">
+          <div class="section-head">
+            <h2>Listings Pipeline</h2>
+            <span>Updated 2 mins ago</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Area</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Agent</th>
+                  <th>Days on Market</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Palm Jumeirah Villa</td>
+                  <td>Palm Jumeirah</td>
+                  <td>$3.2M</td>
+                  <td><span class="status active">Active</span></td>
+                  <td>Sarah Ahmed</td>
+                  <td>28</td>
+                </tr>
+                <tr>
+                  <td>Dubai Marina Apartment</td>
+                  <td>Dubai Marina</td>
+                  <td>$820K</td>
+                  <td><span class="status sold">Sold</span></td>
+                  <td>Omar Khalid</td>
+                  <td>17</td>
+                </tr>
+                <tr>
+                  <td>Downtown Penthouse</td>
+                  <td>Downtown Dubai</td>
+                  <td>$1.9M</td>
+                  <td><span class="status pending">Pending</span></td>
+                  <td>Nadia Rahman</td>
+                  <td>32</td>
+                </tr>
+                <tr>
+                  <td>Business Bay Loft</td>
+                  <td>Business Bay</td>
+                  <td>$1.15M</td>
+                  <td><span class="status active">Active</span></td>
+                  <td>Hassan Yusuf</td>
+                  <td>21</td>
+                </tr>
+                <tr>
+                  <td>JVC Townhouse</td>
+                  <td>JVC</td>
+                  <td>$970K</td>
+                  <td><span class="status pending">Pending</span></td>
+                  <td>Lina Kareem</td>
+                  <td>26</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card leaderboard-card">
+          <div class="section-head">
+            <h2>Top Performing Agents</h2>
+            <span>Q2 FY24</span>
+          </div>
+          <ul class="agent-list">
+            <li>
+              <div>
+                <p class="agent-name">Sarah Ahmed</p>
+                <p class="agent-meta">12 closed deals</p>
+              </div>
+              <p class="agent-sales">$4.3M sales</p>
+            </li>
+            <li>
+              <div>
+                <p class="agent-name">Omar Khalid</p>
+                <p class="agent-meta">10 closed deals</p>
+              </div>
+              <p class="agent-sales">$3.7M sales</p>
+            </li>
+            <li>
+              <div>
+                <p class="agent-name">Nadia Rahman</p>
+                <p class="agent-meta">8 closed deals</p>
+              </div>
+              <p class="agent-sales">$2.9M sales</p>
+            </li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
