@@ -63,6 +63,7 @@ body {
   margin: 0;
   font-size: 1.06rem;
   font-weight: 800;
+  letter-spacing: 0.2px;
 }
 
 .brand-subtitle {
@@ -130,6 +131,7 @@ body {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
 }
 
 .topbar {
@@ -395,6 +397,8 @@ tbody tr:hover { background: rgba(207, 174, 102, 0.07); }
   padding: 4px 9px;
   font-size: 0.73rem;
   font-weight: 700;
+  cursor: pointer;
+  padding: 10px 12px;
 }
 
 .btn-primary,
@@ -426,6 +430,11 @@ tbody tr:hover { background: rgba(207, 174, 102, 0.07); }
   color: inherit;
   display: grid;
   gap: 10px;
+  background: #fff;
+  border: 1px solid #dbe6fb;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 0.88rem;
 }
 
 .filter-bar {
@@ -501,3 +510,4 @@ tbody tr:hover { background: rgba(207, 174, 102, 0.07); }
   .agents-grid,
   .settings-grid { grid-template-columns: 1fr; }
 }
+
