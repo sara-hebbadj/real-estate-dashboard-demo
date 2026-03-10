@@ -14,25 +14,35 @@ const chartFont = {
   weight: "500"
 };
 
+const css = getComputedStyle(document.documentElement);
+const uiColor = (variable, fallback) => css.getPropertyValue(variable).trim() || fallback;
+
+const chartText = uiColor("--muted", "#9cb0d1");
+const chartLabel = uiColor("--text", "#f2f6ff");
+const chartGrid = "rgba(207, 174, 102, 0.16)";
+const chartPrimary = uiColor("--primary", "#cfae66");
+const chartAccent = uiColor("--accent", "#d8b978");
+const chartPrimaryStrong = uiColor("--primary-strong", "#e2c586");
+
 const commonOptions = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
     legend: {
       labels: {
-        color: "#334155",
+        color: chartLabel,
         font: chartFont
       }
     }
   },
   scales: {
     x: {
-      ticks: { color: "#64748b", font: chartFont },
-      grid: { color: "rgba(148, 163, 184, 0.12)", drawBorder: false }
+      ticks: { color: chartText, font: chartFont },
+      grid: { color: chartGrid, drawBorder: false }
     },
     y: {
-      ticks: { color: "#64748b", font: chartFont },
-      grid: { color: "rgba(148, 163, 184, 0.15)", drawBorder: false }
+      ticks: { color: chartText, font: chartFont },
+      grid: { color: chartGrid, drawBorder: false }
     }
   }
 };
@@ -41,8 +51,8 @@ const priceTrendCanvas = document.getElementById("priceTrendChart");
 if (priceTrendCanvas) {
   const lineCtx = priceTrendCanvas.getContext("2d");
   const lineGradient = lineCtx.createLinearGradient(0, 0, 0, 300);
-  lineGradient.addColorStop(0, "rgba(37, 99, 235, 0.25)");
-  lineGradient.addColorStop(1, "rgba(37, 99, 235, 0.02)");
+  lineGradient.addColorStop(0, "rgba(207, 174, 102, 0.22)");
+  lineGradient.addColorStop(1, "rgba(207, 174, 102, 0.03)");
 
   new Chart(priceTrendCanvas, {
     type: "line",
@@ -52,14 +62,14 @@ if (priceTrendCanvas) {
         {
           label: "Average Property Price (AED)",
           data: [1650000, 1710000, 1680000, 1775000, 1840000, 1920000],
-          borderColor: "#2563EB",
+          borderColor: chartPrimary,
           backgroundColor: lineGradient,
           borderWidth: 3,
           fill: true,
           tension: 0.42,
           pointRadius: 2,
           pointHoverRadius: 4,
-          pointBackgroundColor: "#2563EB"
+          pointBackgroundColor: chartPrimary
         }
       ]
     },
@@ -71,8 +81,8 @@ const areaSalesCanvas = document.getElementById("areaSalesChart");
 if (areaSalesCanvas) {
   const barCtx = areaSalesCanvas.getContext("2d");
   const barGradient = barCtx.createLinearGradient(0, 0, 0, 280);
-  barGradient.addColorStop(0, "#6366F1");
-  barGradient.addColorStop(1, "#2563EB");
+  barGradient.addColorStop(0, chartPrimaryStrong);
+  barGradient.addColorStop(1, chartAccent);
 
   new Chart(areaSalesCanvas, {
     type: "bar",
@@ -108,8 +118,8 @@ if (typeDistributionCanvas) {
       datasets: [
         {
           data: [45, 25, 18, 12],
-          backgroundColor: ["#2563EB", "#6366F1", "#8B5CF6", "#93C5FD"],
-          borderColor: "#ffffff",
+          backgroundColor: [chartPrimaryStrong, chartAccent, "#d8c089", "#9a7f44"],
+          borderColor: "#08162b",
           borderWidth: 2
         }
       ]
@@ -121,12 +131,35 @@ if (typeDistributionCanvas) {
         legend: {
           position: "bottom",
           labels: {
-            color: "#334155",
+            color: chartLabel,
             padding: 16,
             font: chartFont
           }
         }
       }
     }
+  });
+}
+
+const generateReportButton = document.getElementById("generate-report");
+if (generateReportButton) {
+  generateReportButton.addEventListener("click", () => {
+    const csv = [
+      "Metric,Value",
+      "Closed Revenue,14600000",
+      "Average Deal Size,1950000",
+      "Commission Collected,292000",
+      "Deals Closed,56"
+    ].join("\n");
+
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "Monthly_Performance_Report.csv";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
   });
 }
