@@ -1,1 +1,43 @@
-placeholder
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Listings | PrimeEstate Analytics</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><p class="brand-title">PrimeEstate</p><p class="brand-subtitle">Analytics Suite</p></div>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a class="nav-link" href="index.html">Dashboard</a><a class="nav-link active" href="listings.html">Listings</a><a class="nav-link" href="leads.html">Leads</a><a class="nav-link" href="agents.html">Agents</a><a class="nav-link" href="analytics.html">Analytics</a><a class="nav-link" href="reports.html">Reports</a><a class="nav-link" href="settings.html">Settings</a>
+      </nav>
+    </aside>
+    <main class="main-content">
+      <header class="topbar card"><label class="search-wrap" for="search"><span class="label-text">Search</span><input id="search" type="search" placeholder="Search listings" /></label><div class="topbar-right"><button class="notification">Alerts<span class="notification-dot"></span></button><div class="date-display" id="current-date"></div><div class="profile">RA</div></div></header>
+      <article class="card table-card">
+        <div class="section-head"><h2>All Listings</h2><span>Dubai portfolio</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Property</th><th>Area</th><th>Price (AED)</th><th>Type</th><th>Status</th><th>Agent</th><th>Days on Market</th></tr></thead>
+            <tbody>
+              <tr><td>Palm Jumeirah Villa</td><td>Palm Jumeirah</td><td>AED 3,200,000</td><td>Villa</td><td><span class="status active">Active</span></td><td>Sarah Ahmed</td><td>28</td></tr>
+              <tr><td>Dubai Marina Apartment</td><td>Dubai Marina</td><td>AED 820,000</td><td>Apartment</td><td><span class="status sold">Sold</span></td><td>Omar Khalid</td><td>17</td></tr>
+              <tr><td>Downtown Penthouse</td><td>Downtown Dubai</td><td>AED 1,950,000</td><td>Penthouse</td><td><span class="status pending">Pending</span></td><td>Nadia Rahman</td><td>32</td></tr>
+              <tr><td>Business Bay Office</td><td>Business Bay</td><td>AED 1,100,000</td><td>Commercial</td><td><span class="status active">Active</span></td><td>Hassan Yusuf</td><td>21</td></tr>
+              <tr><td>JVC Townhouse</td><td>JVC</td><td>AED 640,000</td><td>Townhouse</td><td><span class="status pending">Pending</span></td><td>Lina Kareem</td><td>26</td></tr>
+              <tr><td>Arabian Ranches Villa</td><td>Arabian Ranches</td><td>AED 2,800,000</td><td>Villa</td><td><span class="status sold">Sold</span></td><td>Majid Noor</td><td>35</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
