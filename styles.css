@@ -128,8 +128,8 @@ body::before {
 .topbar {
   padding: 15px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   gap: 12px;
   background: rgba(15, 24, 46, 0.78);
 }
@@ -146,7 +146,9 @@ body::before {
 
 .search-wrap input,
 .filter-bar input,
-.filter-bar select {
+.filter-bar select,
+.report-actions select,
+.report-actions input {
   width: 100%;
   border: 1px solid rgba(168, 186, 255, 0.24);
   border-radius: 12px;
@@ -177,7 +179,7 @@ body::before {
   border: 1px solid rgba(168, 186, 255, 0.3);
   background: rgba(20, 30, 54, 0.82);
   border-radius: 12px;
-  padding: 10px 14px;
+  padding: 9px 12px;
   font-weight: 600;
   color: var(--text);
   display: flex;
@@ -194,27 +196,40 @@ body::before {
 }
 
 .date-display {
+  font-size: 0.86rem;
   color: var(--muted);
   font-weight: 500;
   font-size: 0.88rem;
 }
 
 .profile {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--primary-strong), var(--accent));
   color: #fff;
   display: grid;
   place-items: center;
-  font-size: 0.9rem;
   font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
 }
 
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(145px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(5, minmax(140px, 1fr));
+  gap: 14px;
+}
+
+.metric-card,
+.chart-card,
+.table-card,
+.leaderboard-card,
+.settings-card,
+.pipeline-stage,
+.agent-perf-card {
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .metric-card {
@@ -241,12 +256,15 @@ body::before {
 .settings-card:hover,
 .pipeline-stage:hover,
 .agent-perf-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-hover);
 }
 
 .metric-title {
   margin: 0;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
   color: var(--muted);
   font-size: 13px;
   font-weight: 500;
@@ -258,7 +276,6 @@ body::before {
   margin: 14px 0 10px;
   font-size: 30px;
   font-weight: 700;
-  line-height: 1.1;
 }
 
 .metric-growth {
@@ -267,27 +284,20 @@ body::before {
   font-weight: 600;
 }
 
-.metric-growth.positive {
-  color: var(--success);
-}
-
-.metric-growth.negative {
-  color: var(--danger);
-}
+.metric-growth.positive { color: var(--success); }
+.metric-growth.negative { color: var(--danger); }
 
 .chart-grid,
-.bottom-grid {
+.bottom-grid,
+.reports-grid,
+.report-actions {
   display: grid;
-  gap: 16px;
+  gap: 14px;
 }
 
-.chart-grid {
-  grid-template-columns: 2fr 1fr;
-}
-
-.chart-wide {
-  grid-row: span 2;
-}
+.chart-grid { grid-template-columns: 2fr 1fr; }
+.bottom-grid { grid-template-columns: 2fr 1fr; }
+.chart-wide { grid-row: span 2; }
 
 .chart-card,
 .table-card,
@@ -323,19 +333,20 @@ body::before {
   height: 280px !important;
 }
 
-.bottom-grid {
-  grid-template-columns: 2fr 1fr;
-}
-
 .section-head {
   display: flex;
-  align-items: baseline;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 12px;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
-.section-head span {
+.section-head span,
+.report-note,
+.excel-meta,
+.agent-meta,
+.settings-card p,
+.pipeline-stage p {
   color: var(--muted);
   font-size: 0.84rem;
 }
@@ -348,12 +359,10 @@ td {
   display: grid;
   grid-template-columns: 2fr repeat(3, 1fr);
   gap: 12px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
-.table-wrap {
-  overflow-x: auto;
-}
+.table-wrap { overflow-x: auto; }
 
 table {
   width: 100%;
@@ -388,7 +397,6 @@ tbody tr:hover {
 
 .status {
   display: inline-block;
-  padding: 6px 11px;
   border-radius: 999px;
   font-size: 0.74rem;
   font-weight: 700;
@@ -411,42 +419,32 @@ tbody tr:hover {
 
 .pipeline-grid,
 .agents-grid,
-.settings-grid {
+.settings-grid,
+.reports-grid {
   display: grid;
   gap: 14px;
 }
 
-.pipeline-grid {
-  grid-template-columns: repeat(5, minmax(160px, 1fr));
-}
-
-.pipeline-stage p,
-.agent-meta,
-.settings-card p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
+.pipeline-grid { grid-template-columns: repeat(5, minmax(150px, 1fr)); }
+.agents-grid { grid-template-columns: repeat(4, minmax(150px, 1fr)); }
+.settings-grid { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
+.reports-grid { grid-template-columns: 2fr 1fr; }
 
 .stage-count {
-  margin: 10px 0 4px;
-  font-size: 30px;
+  margin: 8px 0 4px;
+  font-size: 28px;
   font-weight: 700;
-}
-
-.agents-grid {
-  grid-template-columns: repeat(4, minmax(160px, 1fr));
 }
 
 .agent-perf-card h3 {
   margin: 0;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .agent-perf-card .metric-value {
-  font-size: 28px;
-  margin: 12px 0 4px;
+  font-size: 1.8rem;
+  margin: 10px 0 4px;
 }
 
 .agent-list {
@@ -454,35 +452,94 @@ tbody tr:hover {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 12px;
+  gap: 10px;
 }
 
 .agent-list li {
   border: 1px solid rgba(168, 186, 255, 0.16);
   background: rgba(17, 26, 49, 0.72);
   border-radius: 12px;
-  padding: 13px;
+  padding: 12px;
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  background: #fbfdff;
 }
 
 .agent-name,
-.agent-sales {
-  margin: 0;
-  font-weight: 600;
+.agent-sales { margin: 0; font-weight: 600; }
+
+.report-panel {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
-.settings-grid {
-  grid-template-columns: repeat(2, minmax(220px, 1fr));
+.report-actions {
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  margin-bottom: 14px;
+}
+
+.btn-primary {
+  border: 0;
+  border-radius: 11px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 10px 12px;
+}
+
+.btn-secondary {
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: #fff;
+  color: var(--text);
+  font-weight: 600;
+  padding: 10px 12px;
+}
+
+.excel-sync {
+  border: 1px dashed #bed1ef;
+  border-radius: 14px;
+  padding: 14px;
+  background: #f6faff;
+  display: grid;
+  gap: 10px;
+}
+
+.excel-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #146c43;
+  background: #dbf6e9;
+}
+
+.excel-files {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.excel-files li {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  border: 1px solid #dbe6fb;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 0.88rem;
 }
 
 @media (max-width: 1200px) {
   .kpi-grid,
-  .agents-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
+  .agents-grid,
   .pipeline-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -490,19 +547,17 @@ tbody tr:hover {
   .chart-grid,
   .bottom-grid,
   .filter-bar,
-  .settings-grid {
+  .settings-grid,
+  .reports-grid,
+  .report-actions {
     grid-template-columns: 1fr;
   }
 
-  .chart-wide {
-    grid-row: auto;
-  }
+  .chart-wide { grid-row: auto; }
 }
 
 @media (max-width: 860px) {
-  .app-shell {
-    flex-direction: column;
-  }
+  .app-shell { flex-direction: column; }
 
   .sidebar {
     position: static;
@@ -513,7 +568,7 @@ tbody tr:hover {
   .main-content {
     margin-left: 0;
     width: 100%;
-    padding: 18px;
+    padding: 16px;
   }
 
   .kpi-grid,

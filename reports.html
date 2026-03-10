@@ -15,8 +15,49 @@
     <aside class="sidebar"><div class="brand"><p class="brand-title">PrimeEstate</p><p class="brand-subtitle">Analytics Suite</p></div><nav class="nav-links" aria-label="Primary navigation"><a class="nav-link" href="index.html">Dashboard</a><a class="nav-link" href="listings.html">Listings</a><a class="nav-link" href="leads.html">Leads</a><a class="nav-link" href="agents.html">Agents</a><a class="nav-link" href="analytics.html">Analytics</a><a class="nav-link active" href="reports.html">Reports</a><a class="nav-link" href="settings.html">Settings</a></nav></aside>
     <main class="main-content">
       <header class="topbar card"><label class="search-wrap" for="search"><span class="label-text">Search</span><input id="search" type="search" placeholder="Search reports" /></label><div class="topbar-right"><button class="notification" aria-label="Notifications">Alerts<span class="notification-dot"></span></button><div class="date-display" id="current-date"></div><div class="profile" aria-label="User profile">RA</div></div></header>
-      <article class="card table-card"><div class="section-head"><h2>Revenue Snapshot</h2><span>All values in AED</span></div><p class="metric-title">Q2 closed revenue: AED 14,600,000 with strongest concentration in Palm Jumeirah and Downtown Dubai. Average ticket size: AED 1,950,000.</p></article>
-      <article class="card table-card"><div class="section-head"><h2>Quarterly Highlights</h2><span>Executive summary</span></div><p class="metric-title">Premium and ultra-luxury segments continue to lead, with 12% growth in active inventory and 8% increase in closed sales across key Dubai communities.</p></article>
+
+      <section class="report-panel">
+        <div class="section-head"><h2>Monthly Performance Report Builder</h2><span>Export-ready</span></div>
+        <div class="report-actions">
+          <select aria-label="Report period"><option>May 2026</option><option>Apr 2026</option><option>Mar 2026</option></select>
+          <select aria-label="Team"><option>All teams</option><option>Off-plan team</option><option>Secondary market</option></select>
+          <button class="btn-primary" type="button">Generate Report</button>
+        </div>
+        <p class="report-note">Produces board-ready PDF + Excel pack with area KPIs, agent performance, commission summary, and lead funnel diagnostics.</p>
+      </section>
+
+      <section class="reports-grid">
+        <article class="report-panel">
+          <div class="section-head"><h3>Revenue Snapshot</h3><span>All values in AED</span></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Metric</th><th>Current</th><th>Previous</th><th>Variance</th></tr></thead>
+              <tbody>
+                <tr><td>Closed Revenue</td><td>14,600,000</td><td>13,400,000</td><td>+8.9%</td></tr>
+                <tr><td>Average Deal Size</td><td>1,950,000</td><td>1,830,000</td><td>+6.5%</td></tr>
+                <tr><td>Commission Collected</td><td>292,000</td><td>271,500</td><td>+7.5%</td></tr>
+                <tr><td>Deals Closed</td><td>56</td><td>51</td><td>+9.8%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="report-panel excel-sync">
+          <div class="section-head"><h3>Excel Workflow</h3><span class="excel-badge">Agent Friendly</span></div>
+          <p class="excel-meta">Your agents can keep using Excel templates and auto-sync into this dashboard.</p>
+          <ul class="excel-files">
+            <li><span>Weekly_Viewing_Report.xlsx</span><span>Template</span></li>
+            <li><span>Agent_Commission_Tracker.xlsx</span><span>Template</span></li>
+            <li><span>Inventory_Valuation_Model.xlsx</span><span>Template</span></li>
+          </ul>
+          <button class="btn-secondary" type="button">Download Excel Pack</button>
+        </article>
+      </section>
+
+      <article class="report-panel">
+        <div class="section-head"><h3>Quarterly Highlights</h3><span>Executive summary</span></div>
+        <p class="report-note">Luxury villa supply tightened by 5.4% while buyer demand from referral channels expanded. Top-performing cluster remained Palm Jumeirah, followed by Downtown and Arabian Ranches.</p>
+      </article>
     </main>
   </div>
   <script src="script.js"></script>
